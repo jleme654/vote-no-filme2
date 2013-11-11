@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Vote no Filme</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+            <p:layoutUnit position="center">
+
+                <h3><center>Filme Escolhido: </center></h3>
+                <p:layout fullPage="true">
+                    <h:form>
+                        <table width="50%" align="center"><tr><td>
+
+                            <p:dataTable var="m" value="#{controllerMovies.listMovies}" rows="2" scrollWidth="50%">  
+                                <p:column headerText="Cartaz"> 
+                                    <p:graphicImage value="images/#{m.id}.jpg" />
+                                </p:column> 
+
+                                <p:column headerText="Nome do Filme">  
+                                    <h:outputText value="#{m.nome}" />  
+                                </p:column> 
+
+                                <p:column headerText="Votos">  
+                                    <h:outputText value="#{m.voto}" /> <br />
+                                    <h:commandButton id="submitButton" 
+                                                     value="Confirmar" 
+                                                     action="#{controllerMovies.votar(m)}">
+                                    </h:commandButton>
+                                </p:column> 
+
+                            </p:dataTable>
+
+                            <a href="outrosFilmes.xhtml"><h4><center>Deseja Votar em Outros Filmes? </center></h4></a>
+
+                            <a href="finalizacao.xhtml"><h4><center>Deseja Finalizar a Votacao? </center></h4></a>
+
+                            </td></tr></table>
+                    </h:form>
+
+                </p:layout>
+
+            </p:layoutUnit>
+
+        </h:body>
+
+    </f:view>
+</html>
+
